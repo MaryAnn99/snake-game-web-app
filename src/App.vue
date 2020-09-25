@@ -7,7 +7,12 @@
 import Game from '@/components/Game'
 export default {
   name: 'App',
-  components: { Game }
+  components: { Game },
+  data() {
+    return {
+      count: 199
+    }
+  }
 }
 </script>
 

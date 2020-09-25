@@ -1,9 +1,8 @@
 import { Scene } from 'phaser'
-import sky from '@/game/assets/sky.png'
-import bomb from '@/game/assets/bomb.png'
-import thudMp3 from '@/game/assets/thud.mp3'
-import thudOgg from '@/game/assets/thud.ogg'
-
+import greenApple from '@/game/assets/imgs/greenApple.png'
+import redApple from '@/game/assets/imgs/redApple.png'
+import snakeBody from '@/game/assets/imgs/snakeBody2.png'
+import box from '@/game/assets/imgs/box.png'
 
 export default class BootScene extends Scene {
   constructor () {
@@ -11,9 +10,12 @@ export default class BootScene extends Scene {
   }
 
   preload () {
-    this.load.image('sky', sky)
-    this.load.image('bomb', bomb)
-    this.load.audio('thud', [thudMp3, thudOgg])
+
+    this.load.image('greenApple', greenApple);
+    this.load.image('redApple', redApple);
+    this.load.image('snakeBody', snakeBody);
+    this.load.image('box', box);
+    // this.load.bitmapFont('myFont', 'src/game/assets/fonts/font.png', 'src/game/assets/fonts/font.fnt');
   }
 
   create () {
