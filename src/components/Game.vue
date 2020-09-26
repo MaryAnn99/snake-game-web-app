@@ -34,5 +34,9 @@ export default {
 .placeholder {
   font-size: 2rem;
   font-family: 'Courier New', Courier, monospace;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 600px; 
+  width: 700px;
 }
 </style>
