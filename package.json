@@ -11,12 +11,16 @@
   "dependencies": {
     "core-js": "^3.6.5",
     "phaser": "^3.24.1",
-    "vue": "^2.6.12"
+    "vue": "^2.6.12",
+    "vuetify": "^2.3.10"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.5.4",
     "@vue/cli-service": "^4.5.4",
+    "deepmerge": "^4.2.2",
+    "fibers": "^5.0.0",
     "node-sass": "^4.14.1",
+    "sass": "^1.26.11",
     "sass-loader": "^10.0.2",
     "serve": "^11.3.2",
     "vue-template-compiler": "^2.6.12"

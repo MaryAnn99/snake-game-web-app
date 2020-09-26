@@ -1,5 +1,8 @@
 <template>
-  <Game />
+  <div>
+    <h1> SNAKE.COM </h1>
+    <Game />
+  </div>
 </template>
 
 
