@@ -1,9 +1,11 @@
+import {eventBus} from '../../main';
 export default class GameOverScene extends Phaser.Scene {
     constructor() {
         super({key: 'GameOverScene', active: false});
     }
     init(data) {
         this.score = data.score;
+        eventBus.changeScore(this.score);
     }
     create() {
         let { width, height } = this.sys.canvas;

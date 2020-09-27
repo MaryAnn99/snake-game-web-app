@@ -10,6 +10,9 @@
         <Game />
       </div>
       <div class="records">
+        <div class="saveScoreform">
+          <snake-game-save-score-form> </snake-game-save-score-form>
+        </div>
         <div class="table">
           <div class="recordsTitle">
             <h3> BEST SCORES </h3>
@@ -31,14 +34,17 @@
 <script>
 import Game from '@/components/Game'
 import RecordsTable from '@/components/RecordsTable'
+import SaveScoreForm from '@/components/SaveScoreForm'
 import logo from '../public/page_title.png'
 import {Records} from '@/services/records'
+import {eventBus} from '@/main'
 
 export default {
   name: 'App',
   components: { 
     Game, 
-    'snake-game-records-table': RecordsTable 
+    'snake-game-records-table': RecordsTable,
+    'snake-game-save-score-form': SaveScoreForm
   },
   data() {
     return {
@@ -46,13 +52,21 @@ export default {
       records: null
     }
   },
+  methods: {
+    getRecords() {
+      Records.index().then(data => {
+          this.records = data
+      }).catch((err) => {
+        console.log("error: ", err)
+      });
+    },
+  },
   mounted () {
-    Records.index().then(data => {
-      this.records = data
-    }).catch((err) => {
-      console.log("error: ", err)
+    this.getRecords();
+    eventBus.$on('recordsTableWasUpdated', () => {
+        this.getRecords();
     })
-  }
+  },
 }
 </script>
 <style lang="scss" scoped>
@@ -87,11 +101,19 @@ export default {
   margin-right: auto;
   width: 60%;
   border: 4px dotted blue;
+  margin-top: 3%;
 }
 .recordsTitle {
   color:#fff700;
   text-align: center;
   font-size:30px;
   font-family: 'Courier New', Courier, monospace;
+}
+.saveScoreform {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+  // border: 4px dotted blue;
 }
 </style>
