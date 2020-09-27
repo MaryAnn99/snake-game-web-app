@@ -13,6 +13,10 @@ const apiClient = axios.create({
       return {statusCode: '404', 
               message: 'No results found'}
     }
+    if (error.message.endsWith('400')) {
+      return {statusCode: '400', 
+              message: 'Bad request'}
+    }
     return Promise.reject(error.message);
   });
   
