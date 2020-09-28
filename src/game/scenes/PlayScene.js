@@ -10,6 +10,11 @@ export default class PlayScene extends Scene {
 
   create() {
     this.gameOverSceneOpen = false;
+    let { width } = this.sys.canvas;
+    this.scoreText = this.add.text(width - 200, 0, 'Score: 0', {
+      fontFamily: 'font1',
+      fontSize: '30px'
+    });
     this.snake = new Snake(this.physics.world, this, 300, 400, 'snakeBody');
     this.greenApple = new Apple(this, 200, 100, 'greenApple', Apple.GREEN);
     this.redApple = new Apple(this, 100, 50, 'redApple', Apple.RED);
@@ -33,6 +38,8 @@ export default class PlayScene extends Scene {
     }
     this.obstacles.tryChangeObstacles(this.snake);
     apple.change();
+    let score = Phaser.Math.MinSub(this.snake.greenApplesCounter, this.snake.redApplesCounter, 0);
+    this.scoreText.setText('Score: ' + score);
   }
   getLimits(element) {
     let { width } = this.sys.canvas;

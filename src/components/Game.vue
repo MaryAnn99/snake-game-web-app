@@ -1,7 +1,10 @@
 <template>
-  <div :id="containerId" v-if="downloaded" />
-  <div class="placeholder" v-else>
-    Downloading ...
+  <div>
+    <div style="font-family:font1; position:absolute; left:-1000px; visibility:hidden;"></div>
+    <div :id="containerId" v-if="downloaded" />
+    <div class="placeholder" v-else>
+      Downloading ...
+    </div>
   </div>
 </template>
 

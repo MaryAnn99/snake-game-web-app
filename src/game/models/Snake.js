@@ -41,7 +41,7 @@ export default class Snake extends Phaser.Physics.Arcade.Group {
         this.greenApplesCounter ++;
     }
     eatRedApple() {
-        this.redApplesCounter ++;
+        this.redApplesCounter += 2;
         // If the snake decreases more than its size it dies.
         if (this.getLength() <= 2) {
             this.dead = true;
