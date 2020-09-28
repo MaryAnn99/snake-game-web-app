@@ -9,8 +9,8 @@ export const eventBus = new Vue({
     changeScore(score) {
       this.$emit('scoreWasUpdated', score);
     },
-    updateRecordsTable() {
-      this.$emit('recordsTableWasUpdated');
+    updateRecordsTable(username) {
+      this.$emit('recordsTableWasUpdated', username);
     }
   }
 })

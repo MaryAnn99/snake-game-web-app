@@ -7,14 +7,14 @@ const apiClient = axios.create({
   });
 
   apiClient.interceptors.response.use((response) => {
-    return response.data;
+    return {data: response.data, status: response.status};
   }, (error) => {
     if (error.message.endsWith('404')) {
-      return {statusCode: '404', 
+      return {status: 404, 
               message: 'No results found'}
     }
     if (error.message.endsWith('400')) {
-      return {statusCode: '400', 
+      return {status: 400, 
               message: 'Bad request'}
     }
     return Promise.reject(error.message);

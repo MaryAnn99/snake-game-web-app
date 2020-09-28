@@ -7,7 +7,7 @@
     <v-container fluid>
     <img :src="logo" class="logo"/>
       <div class="game">
-        <Game />
+        <snake-game-game> </snake-game-game>
       </div>
       <div class="records">
         <div class="saveScoreform">
@@ -15,9 +15,9 @@
         </div>
         <div class="table">
           <div class="recordsTitle">
-            <h3> BEST SCORES </h3>
+            <h3 class="text-uppercase"> best scores </h3>
           </div>
-          <snake-game-records-table :records="records"> </snake-game-records-table>
+          <snake-game-records-table :records="records" :current="username"> </snake-game-records-table>
         </div>
       </div>
     </v-container>
@@ -42,20 +42,21 @@ import {eventBus} from '@/main'
 export default {
   name: 'App',
   components: { 
-    Game, 
+    'snake-game-game': Game, 
     'snake-game-records-table': RecordsTable,
     'snake-game-save-score-form': SaveScoreForm
   },
   data() {
     return {
       logo: logo,
-      records: null
+      records: null,
+      username: null
     }
   },
   methods: {
     getRecords() {
-      Records.index().then(data => {
-          this.records = data
+      Records.index().then(response => {
+          this.records = response.data
       }).catch((err) => {
         console.log("error: ", err)
       });
@@ -63,8 +64,9 @@ export default {
   },
   mounted () {
     this.getRecords();
-    eventBus.$on('recordsTableWasUpdated', () => {
+    eventBus.$on('recordsTableWasUpdated', (username) => {
         this.getRecords();
+        this.username = username;
     })
   },
 }
@@ -114,6 +116,5 @@ export default {
   margin-left: auto;
   margin-right: auto;
   width: 60%;
-  // border: 4px dotted blue;
 }
 </style>
