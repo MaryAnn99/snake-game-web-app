@@ -1,5 +1,6 @@
 <template>
   <div>
+  <h1 style="font-family: 'Courier New', Courier, monospace;"> Your best score: {{bestScore}} </h1>
   <v-form v-model="valid">
     <v-container fluid>
       <v-row no-gutters>
@@ -99,20 +100,16 @@ import {Records} from '../services/records'
               if (result.statusCode === '400') {
                 // Username exists with a higher score
                 this.snackbar.fail.show = true;
-              } else {
-                // Record updated
-                eventBus.updateRecordsTable();
-                this.snackbar.success.show = true;
+                return;
               }
-            } else {
-              // Record created.
-              this.snackbar.success.show = true;
-              eventBus.updateRecordsTable();
             }
+            // Record created or updated.
+            this.snackbar.success.show = true;
+            eventBus.updateRecordsTable();
+            this.bestScore = 0;
           } catch (e) {
             // network error
             this.snackbar.error.show = true;
-            console.log("hal")
           }
         },
     },
