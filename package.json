@@ -1,8 +1,8 @@
 {
-  "name": "vue-phaser3",
+  "name": "snake-game-web-app",
   "version": "2.1.1",
-  "description": "Template for working with Phaser 3 in a Vue project",
-  "author": "Markus Appel <markospoparkos@gmail.com>",
+  "description": "Web application for snake.com phaser game.",
+  "author": "Mary_Ann <maridog910@gmail.com>",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --modern",
@@ -35,6 +35,6 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Sun0fABeach/vue-phaser3.git"
+    "url": "https://github.com/MaryAnn99/snake-game-web-app.git"
   }
 }
